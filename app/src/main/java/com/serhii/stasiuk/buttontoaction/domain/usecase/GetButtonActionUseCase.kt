@@ -10,11 +10,12 @@ class GetButtonActionUseCase {
         lastTimeChosen: Long?
     ): ButtonActionType? {
         return properties.filter {
-            it.isEnabled && isCurrentDay(it.validDays) &&
-                    canBeChosenAgain(it.coolDownMillis, lastTimeChosen)
+            val isCurrentDay = isCurrentDay(it.validDays)
+            val canBeChosen = canBeChosenAgain(it.coolDownMillis, lastTimeChosen)
+            it.isEnabled && isCurrentDay && canBeChosen
         }.run {
-            val maxValue = maxByOrNull { it.priority } ?: 0
-            val filtered = filter { it.priority == maxValue }
+            val maxValue = maxByOrNull { it.priority }
+            val filtered = filter { it.priority == maxValue?.priority }
             filtered.takeIf { it.isNotEmpty() }?.random()?.type
         }
     }

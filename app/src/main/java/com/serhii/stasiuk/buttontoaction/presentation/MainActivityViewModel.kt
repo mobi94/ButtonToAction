@@ -26,7 +26,7 @@ class MainActivityViewModel(
     }
 
     fun getAction() {
-        lastTimeClicked = System.currentTimeMillis()
         actionLiveData.value = getButtonActionUseCase(properties, lastTimeClicked)
+        lastTimeClicked = System.currentTimeMillis()
     }
 }
