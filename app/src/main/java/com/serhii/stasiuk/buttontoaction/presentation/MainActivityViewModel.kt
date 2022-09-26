@@ -13,7 +13,7 @@ class MainActivityViewModel(
 
     private var properties: List<ButtonProperty> = listOf()
     val actionLiveData = MutableLiveData<ButtonActionType?>()
-    private val lastTimeClicked: Long? = null
+    private var lastTimeClicked: Long? = null
 
     init {
         fetchButtonProperties()
@@ -26,6 +26,7 @@ class MainActivityViewModel(
     }
 
     fun getAction() {
+        lastTimeClicked = System.currentTimeMillis()
         actionLiveData.value = getButtonActionUseCase(properties, lastTimeClicked)
     }
 }
