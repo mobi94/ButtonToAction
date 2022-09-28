@@ -2,4 +2,16 @@
     <string name="app_name">ButtonToAction</string>
     <string name="click_me">Click me</string>
     <string name="loading">Loading…</string>
+    <string name="action_is_toast">Action is Toast!</string>
+    <string name="your_contacts">Your contacts</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings">Settings</string>
+    <string name="empty_contacts">You have no contacts</string>
+    <string name="contacts_permission_rationale_title">The app would like to access your Contacts</string>
+    <string name="contacts_permission_rationale_message">This allows us to show your contacts info.</string>
+    <string name="contacts_permission_rationale_message_never_ask">
+        This allows us to show your contacts info.\n\nPlease click on Settings and enable Contacts permission.
+    </string>
 </resources>

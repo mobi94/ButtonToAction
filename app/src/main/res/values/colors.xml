@@ -7,4 +7,23 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey_blue">#66768a</color>
+    <color name="light_grey">#d2d5db</color>
+
+    <array name="letter_tile_colors_light">
+        <item>#f3cf49</item>
+        <item>#78aca7</item>
+        <item>#21bae1</item>
+        <item>#C0CAD4</item>
+    </array>
+    <color name="letter_tile_text_color_light">#ffffff</color>
+
+    <!-- Darker versions of letter_tile_colors, two shades darker. -->
+    <array name="letter_tile_colors_dark">
+        <item>#FFC107</item>
+        <item>#2196F3</item>
+        <item>#3F51B5</item>
+        <item>#C0CAD4</item>
+    </array>
+    <color name="letter_tile_text_color_dark">#ffffff</color>
 </resources>
