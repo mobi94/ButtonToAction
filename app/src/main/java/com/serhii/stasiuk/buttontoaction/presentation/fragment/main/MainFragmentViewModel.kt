@@ -37,7 +37,7 @@ class MainFragmentViewModel(
     }
 
     fun getAction() {
-        actionLiveData.value = ButtonActionType.CALL//getButtonActionUseCase(properties, lastTimeClicked)
+        actionLiveData.value = getButtonActionUseCase(properties, lastTimeClicked)
         lastTimeClicked = System.currentTimeMillis()
     }
 }
