@@ -24,7 +24,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>(FragmentMainBinding::infl
     private fun initViews() {
         safeBind {
             mainButton.setOnClickListener {
-                viewModel.getAction()
+                viewModel.findButtonAction()
             }
         }
     }

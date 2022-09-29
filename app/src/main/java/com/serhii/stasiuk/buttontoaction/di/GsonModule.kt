@@ -12,6 +12,7 @@ val gsonModule = module {
 private fun provideGsonBuilder(): GsonBuilder {
     return GsonBuilder()
         .setLenient()
+        .enableComplexMapKeySerialization()
 }
 
 private fun provideGson(builder: GsonBuilder): Gson {

@@ -7,6 +7,6 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 val viewModelModule: Module = module {
-    viewModel { MainFragmentViewModel(get(), get()) }
+    viewModel { MainFragmentViewModel(get(), get(), get(), get()) }
     viewModel { ContactsFragmentViewModel(get()) }
 }

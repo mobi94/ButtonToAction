@@ -1,4 +1,4 @@
-package com.serhii.stasiuk.buttontoaction.domain.usecase
+package com.serhii.stasiuk.buttontoaction.domain.usecase.action_button
 
 import com.serhii.stasiuk.buttontoaction.domain.entity.ButtonProperty
 import com.serhii.stasiuk.buttontoaction.domain.repository.ServerRepository

@@ -1,22 +1,22 @@
-package com.serhii.stasiuk.buttontoaction.domain.usecase
+package com.serhii.stasiuk.buttontoaction.domain.usecase.action_button
 
-import com.serhii.stasiuk.buttontoaction.domain.entity.ButtonActionType
 import com.serhii.stasiuk.buttontoaction.domain.entity.ButtonProperty
 import java.util.*
 
-class GetButtonActionUseCase {
+class FindButtonActionUseCase(
+    private val checkButtonCoolDownUseCase: CheckButtonCoolDownUseCase
+) {
     operator fun invoke(
-        properties: List<ButtonProperty>,
-        lastTimeChosen: Long?
-    ): ButtonActionType? {
+        properties: List<ButtonProperty>
+    ): ButtonProperty? {
         return properties.filter {
             val isCurrentDay = isCurrentDay(it.validDays)
-            val canBeChosen = canBeChosenAgain(it.coolDownMillis, lastTimeChosen)
+            val canBeChosen = checkButtonCoolDownUseCase(it.type, it.coolDownMillis)
             it.isEnabled && isCurrentDay && canBeChosen
         }.run {
             val maxValue = maxByOrNull { it.priority }
             val filtered = filter { it.priority == maxValue?.priority }
-            filtered.takeIf { it.isNotEmpty() }?.random()?.type
+            filtered.takeIf { it.isNotEmpty() }?.random()
         }
     }
 
@@ -34,14 +34,5 @@ class GetButtonActionUseCase {
                 else -> null
             }
         }.contains(currentDayOfWeek)
-    }
-
-    private fun canBeChosenAgain(
-        coolDownMillis: Long, lastTimeChosen: Long?
-    ): Boolean {
-        val currentTime = System.currentTimeMillis()
-        return lastTimeChosen?.let {
-            currentTime - it > coolDownMillis
-        } ?: true
     }
 }

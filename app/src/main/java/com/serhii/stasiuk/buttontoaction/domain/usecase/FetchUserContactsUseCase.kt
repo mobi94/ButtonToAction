@@ -31,8 +31,7 @@ class FetchUserContactsUseCase(
                         val phoneNumberJob = async { parsePhoneNumber(id) }
                         val photoUri = if (imageUriIndex >= 0) {
                             cursor.getString(imageUriIndex)?.let(Uri::parse)
-                        }
-                        else null
+                        } else null
                         if (fullName.isNotBlank()) {
                             contacts.add(
                                 ContactAdapterItem(
