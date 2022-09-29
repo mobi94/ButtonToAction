@@ -40,7 +40,7 @@ The configuration values:
       Monday-Thursday
 * **cool down period (long)**
     * cool down period between choosing an action that was already chosen
-    * for example, if an action has a 3 day (1000*60*60*24*3) cool down period, it can’t  
+    * for example, if an action has a 3 day (1000\*60\*60\*24\*3) cool down period, it can’t  
       be chosen for 3 days after it was shown to the user
     * this should persist across app runs
 
