@@ -39,6 +39,9 @@ android {
     buildFeatures {
         dataBinding true
     }
+    packagingOptions {
+        exclude 'META-INF/README.md'
+    }
 }
 
 dependencies {
