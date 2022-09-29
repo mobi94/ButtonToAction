@@ -2,7 +2,6 @@ package com.serhii.stasiuk.buttontoaction.presentation.adapter
 
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.core.view.setPadding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.serhii.stasiuk.buttontoaction.R
@@ -47,14 +46,22 @@ class ContactsListAdapter(private val clickListener: ContactClickListener) :
 
         private fun initAvatar(item: ContactAdapterItem) {
             binding.avatarImageView.apply {
-                if (item.fullName.isNotBlank()) {
-                    setBackgroundResource(0)
-                    setNamedAvatar(item.fullName)
-                    setPadding(0)
-                } else {
-                    setBackgroundResource(R.drawable.oval_blue)
-                    setImageResource(R.drawable.ic_person_white)
-                    setPadding(7.px)
+                when {
+                    item.photoUri != null -> {
+                        setImageURI(item.photoUri)
+                        post { setContentPadding(0, 0, 0, 0) }
+                    }
+                    item.fullName.isNotBlank() -> {
+                        setBackgroundResource(0)
+                        setNamedAvatar(item.fullName)
+                        post { setContentPadding(0, 0, 0, 0) }
+                    }
+                    else -> {
+                        setBackgroundResource(R.drawable.oval_blue)
+                        setImageResource(R.drawable.ic_person_white)
+                        val padding = 7.px
+                        post { setContentPadding(padding, padding, padding, padding) }
+                    }
                 }
             }
         }
@@ -63,8 +70,12 @@ class ContactsListAdapter(private val clickListener: ContactClickListener) :
             binding {
                 nameTextView.text = item.fullName.ifBlank { item.email }
                 emailTextView.apply {
-                    isVisible = item.fullName.isNotBlank() && item.email.isNotBlank()
+                    isVisible = item.email.isNotBlank()
                     text = item.email
+                }
+                phoneTextView.apply {
+                    isVisible = item.phoneNumber.isNotBlank()
+                    text = item.phoneNumber
                 }
             }
         }

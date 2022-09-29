@@ -12,6 +12,8 @@ import com.serhii.stasiuk.buttontoaction.presentation.adapter.ContactsListAdapte
 import com.serhii.stasiuk.buttontoaction.presentation.fragment.BaseFragment
 import com.serhii.stasiuk.buttontoaction.presentation.model.ContactAdapterItem
 import com.serhii.stasiuk.buttontoaction.utils.PermissionChecker
+import com.serhii.stasiuk.buttontoaction.utils.extensions.callFromDialer
+import com.serhii.stasiuk.buttontoaction.utils.extensions.sendEmail
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactsFragment : BaseFragment<FragmentContactsBinding>(FragmentContactsBinding::inflate),
@@ -48,7 +50,10 @@ class ContactsFragment : BaseFragment<FragmentContactsBinding>(FragmentContactsB
     }
 
     override fun onContactClick(item: ContactAdapterItem) {
-        // Todo
+        context?.apply {
+            if (item.phoneNumber.isNotBlank()) callFromDialer(item.phoneNumber)
+            else if (item.email.isNotBlank()) sendEmail(item.email)
+        }
     }
 
     private fun observeViewModel() {

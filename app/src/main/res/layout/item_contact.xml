@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/guest_root_layout">
 
@@ -7,23 +8,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
+        android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatar_image_view"
             android:layout_width="46dp"
             android:layout_height="46dp"
-            android:layout_gravity="top"
             android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
+            app:contentPadding="7dp"
+            app:shapeAppearanceOverlay="@style/CircleShape"
             tools:background="@drawable/oval_blue"
-            tools:padding="7dp"
             tools:src="@drawable/ic_person_white" />
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -46,6 +48,15 @@
                 android:maxLines="1"
                 android:textSize="14sp"
                 tools:text="a.schmidt@gmail.com" />
+
+            <TextView
+                android:id="@+id/phone_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="14sp"
+                tools:text="+380123456789" />
 
         </LinearLayout>
 
